@@ -1,0 +1,13 @@
+package Diet.app.Aplication;
+
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        new StartScreen();
+        
+
+
+    }
+}
