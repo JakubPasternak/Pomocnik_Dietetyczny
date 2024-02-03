@@ -2,6 +2,8 @@ package Diet.app.Aplication;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BMIandKCALFrame extends JFrame {
     JFrame frame = new JFrame();
@@ -30,15 +32,32 @@ public class BMIandKCALFrame extends JFrame {
          frame.add(BMI);
 
          JLabel KCAL = new JLabel("Zapotrzebowanie energetyczne: " + Calculations.KCALResult(DietFrame.getStringGenderField(),
-                                 DietFrame.getDoubleAgeField(),DietFrame.getDoubleWeightField(), DietFrame.getDoubleHeightField()) + " kcal.");
+                                 DietFrame.getDoubleAgeField(),DietFrame.getDoubleWeightField(), DietFrame.getDoubleHeightField(),
+                                DailyActivitiesFrame.getCMP()) + " kcal");
          KCAL.setFont(new Font("Osward", Font.BOLD, 38));
-         KCAL.setBounds(50, 280, 800, 100);
+         KCAL.setBounds(50, 280, 1000, 100);
          frame.add(KCAL);
 
          JLabel NormsOfBMI = new JLabel("Twoje BMI jest "+ Calculations.BMINormsResultsVoid());
          NormsOfBMI.setFont(new Font("Osward", Font.BOLD, 30));
          NormsOfBMI.setBounds(50, 160, 1200, 100);
          frame.add(NormsOfBMI);
+
+         JButton button = new JButton("Dodaj dane do bazy danych");
+         button.setFont(new Font("Osward", Font.BOLD, 28));
+         button.setBounds(650, 400, 500, 80);
+         button.setFocusable(false);
+         button.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 if(e.getSource()== button){
+                     Conn conn = new Conn();
+                     conn.DodajDoBazy();
+                     frame.dispose();
+                 }
+             }
+         });
+         frame.add(button);
 
     }
 }

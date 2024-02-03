@@ -122,7 +122,7 @@ public class DietFrame extends JFrame {
         reminder.setBounds(500, 420, 800, 100);
         frame.add(reminder);
 
-        JButton button = new JButton("Oblicz");
+        JButton button = new JButton("Idź dalej");
         button.setFont(new Font("Osward", Font.BOLD, 28));
         button.setBounds(550, 370, 150, 80);
         button.setFocusable(false);
@@ -132,7 +132,7 @@ public class DietFrame extends JFrame {
                 if (e.getSource()==button && stringGenderField != null &&  doubleWeightField != null
                         && doubleHeightField != null &&  doubleAgeField != null){
 
-                    new BMIandKCALFrame();
+                    new DailyActivitiesFrame();
 
                     frame.dispose();;
                 }else if(e.getSource()==button && stringGenderField == null ||  doubleWeightField == null
